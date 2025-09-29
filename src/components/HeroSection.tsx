@@ -258,8 +258,8 @@ const HeroSection = () => {
                 
                 <SkillCard 
                   icon={GitBranch}
-                  title="AI & Machine Learning"
-                  description="Model development & deployment"
+                  title="IoT & Smart Systems"
+                  description="Connected device integration"
                   className="col-span-3 row-span-2"
                 />
                 

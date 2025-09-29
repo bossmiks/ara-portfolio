@@ -74,7 +74,7 @@ export const Layout = ({ children }: LayoutProps) => {
               <p className="text-foreground font-medium mb-3">Connect with me</p>
               <div className="flex space-x-4">
                 <motion.a
-                  href="https://github.com/oxBinaryBrain/"
+                  href="https://github.com/bossmiks"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-brand-purple transition-colors bg-secondary p-3 rounded-full"
@@ -85,7 +85,7 @@ export const Layout = ({ children }: LayoutProps) => {
                   <Github className="h-5 w-5" />
                 </motion.a>
                 <motion.a
-                  href="https://www.linkedin.com/in/uday-g-601ba9266/"
+                  href="https://www.linkedin.com/in/michael-ara-jr-317819291/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-brand-purple transition-colors bg-secondary p-3 rounded-full"
@@ -96,7 +96,7 @@ export const Layout = ({ children }: LayoutProps) => {
                   <Linkedin className="h-5 w-5" />
                 </motion.a>
                 <motion.a
-                  href="https://x.com/UdayG6389896490"
+                  href=""
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-brand-purple transition-colors bg-secondary p-3 rounded-full"
@@ -107,7 +107,7 @@ export const Layout = ({ children }: LayoutProps) => {
                   <Twitter className="h-5 w-5" />
                 </motion.a>
                 <motion.a
-                  href="mailto:ud4yg@yandex.com"
+                  href="mailto:aramichae19@gmail.com"
                   className="text-muted-foreground hover:text-brand-purple transition-colors bg-secondary p-3 rounded-full"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}

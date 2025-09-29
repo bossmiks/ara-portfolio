@@ -26,76 +26,83 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Income Tax Fraud Detection",
-      description: "Developed a system to detect fraudulent activities in income tax filings using AI and machine learning techniques. Implemented data preprocessing, feature engineering, and model training.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "Machine Learning", "AI"],
-      code: "https://github.com/oxBinaryBrain/An_Income_Tax_Fraud_Detection_Using_AI-ML",
-      category: "ai"
-    },
-    {
-      id: 2,
-      title: "Oral Cancer Classification using Neural Networks",
-      description: "Developing a machine learning model to detect and classify oral cancer levels from images. It involves data collection, preprocessing, feature extraction, and model evaluation.",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "TensorFlow", "Neural Networks"],
-      code: "https://github.com/oxBinaryBrain/Oral_Cancer_Classification",
-      category: "ai"
-    },
-    {
-      id: 3,
-      title: "Credit Card Fraud Detection",
-      description: "A simple machine learning model which analyzes whether a credit card transaction is fraudulent or not. The dataset is downloaded from Kaggle and processed for analysis.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "Machine Learning", "Data Science"],
-      code: "https://github.com/oxBinaryBrain/CC-Fraud-Detection",
-      category: "ai"
-    },
-    {
-      id: 4,
-      title: "Contextualized Topic Modeling",
-      description: "A python package to run contextualized topic modeling. CTMs combine contextualized embeddings (e.g., BERT) with topic models to get coherent topics and document classification.",
-      image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "NLP", "Machine Learning"],
-      code: "https://github.com/oxBinaryBrain/contextualized-topic-models",
-      category: "ai"
-    },
-    {
-      id: 5,
-      title: "E-commerce Platform",
-      description: "A full-stack e-commerce platform with user authentication, product catalog, and payment processing.",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80",
-      tags: ["JavaScript", "Node.js", "React", "MongoDB"],
-      code: "https://github.com/oxBinaryBrain/E-commerce",
+      title: "Event and Booking Management System",
+      description: "A system to manage events and bookings for a local community center.",
+      image: "https://images.unsplash.com/photo-1649433391719-2e784576d044?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Qm9va2luZ3xlbnwwfHwwfHx8MA%3D%3Ds",
+      tags: ["PHP", "JavaScript", "SQL","HTML","CSS","Bootstrap"],
+      code: "",
       category: "web"
     },
     {
-      id: 6,
+      id: 2,
+      title: "InternNet: A Smart  OJT Placement and Management Portal",
+      description: "A web application to help OJT employers manage their placement process and students.",
+      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
+      tags: ["PHP", "JavaScript", "SQL","HTML","CSS","Bootstrap"],
+      code: "",
+      category: "web"
+    },
+    {
+      id: 3,
+      title: "Manual Besom: IoT-based sustainable cleaning system",
+      description: "An IoT system to monitor and clean a room using a manual cleaning robot.",
+      image: "https://images.unsplash.com/photo-1559819614-81fea9efd090?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEFyZHVpbm98ZW58MHx8MHx8fDA%3D",
+      tags: ["C++", "Arduino", "ESP8266"],
+      category: "iot"
+    },
+    {
+      id: 4,
+      title: "Smart Trash Bin: Automated waste management with Arduino",
+      description: "An IoT system to monitor and manage waste disposal using an Arduino board.",
+      image: "https://media.istockphoto.com/id/1367145837/photo/data-management-with-computer-trash-banner-abstract-background.webp?a=1&b=1&s=612x612&w=0&k=20&c=VW5CemgZ5kwE4KVEpmGj5y8xz1WVoDMsP2EAHxe4DfQ=",
+      tags: ["C++", "Arduino", "ultrasonic sensor"],
+      category: "iot"
+    },
+    {
+      id: 5,
       title: "Personal Portfolio",
       description: "A responsive personal portfolio website showcasing projects and skills.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
       tags: ["React", "Node", "HTML","CSS"],
-      code: "https://github.com/oxBinaryBrain/Portfolio_V1",
+      code: "",
       category: "web"
     },
     {
-      id: 7,
-      title: "Blockchain Explorer",
-      description: "A web interface for exploring blockchain data and transactions.",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
-      tags: ["JavaScript", "React", "Blockchain", "Web3.js"],
-      code: "https://github.com/oxBinaryBrain/Software-solution-to-identify-the-end-receiver-of-a-cryptocurrency-transaction",
-      category: "blockchain"
+      id: 6,
+      title: "Syntax Cafe UI/UX Design",
+      description: "A responsive UI/UX design for a fictional coffee shop.",
+      image: "https://angie-portfolio-4p2c.vercel.app/src/atwsyntax.png",
+      tags: ["UI/UX Design", "Canve", "Figma"],
+      code: "",
+      category: "ui"
     },
-    {
+     {
+      id: 7,
+      title: "Qbyfi Internet UI/UX Design",
+      description: "A responsive UI/UX design for a fictional internet service provider.",
+      image: "https://scontent.fmnl13-2.fna.fbcdn.net/v/t39.30808-1/449711517_122108712506376081_3656056059964631465_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=107&ccb=1-7&_nc_sid=2d3e12&_nc_eui2=AeGqlnorGHtanXzK-l9cg0xA2-YDVmZS4ZLb5gNWZlLhknGAwjObwXbHVTmL3H2Xks0prTeaS1NQnZF0PCbQZfcP&_nc_ohc=ULSJ9NS1pLYQ7kNvwFeaeU7&_nc_oc=AdmrlhDoBpR5_rYaRGKlC2HDBcon_LMnBjBSZQayy6vQHrE42kL0reyVDqZuRJ-Gv_8&_nc_zt=24&_nc_ht=scontent.fmnl13-2.fna&_nc_gid=8jdb6p8b56GGEPzJoMj1QA&oh=00_AfadxQrYlw3xEq8jdzi0tgrSaU4p82lkH8sc6FKskOAf5A&oe=68E026D6",
+      tags: ["UI/UX Design", "Canve", "Figma"],
+      code: "",
+      category: "ui"
+    },
+     {
       id: 8,
-      title: "Smart Home Dashboard",
-      description: "A dashboard for monitoring and controlling smart home devices.",
-      image: "https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?auto=format&fit=crop&w=800&q=80",
-      tags: ["C", "IoT", "NArdiuno"],
-      code: "https://github.com/oxBinaryBrain/Ardiuno",
+      title: "Smart Irrigation System",
+      description: "An IoT system to monitor and control irrigation using sensors and actuators.",
+      image: "https://images.unsplash.com/photo-1557855506-3619a44bab73?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8QXJkdWlub3xlbnwwfHwwfHx8MA%3D%3D",
+      tags: ["Arduino", "Soil Moisture Sensor", "Actuator", "LCD/OLED Display"],
+      code: "",
       category: "iot"
-    }
+    },
+     {
+      id: 9,
+      title: "Boarder's Compass site google",
+      description: "A responsive website for a fictional boarder's compass service.",
+      image: "/uploads/image.jpg",
+      tags: ["UI/UX Design","Google site", "Canva"],
+      code: "",
+      category: "ui"
+    },
   ];
 
   const getIcon = (category: string) => {
@@ -129,8 +136,7 @@ const Projects = () => {
     { id: "all", name: "All Projects" },
     { id: "web", name: "Web Development" },
     { id: "iot", name: "IoT & Smart Systems" },
-    { id: "blockchain", name: "Blockchain" },
-    { id: "iot", name: "IoT" }
+    { id: "ui", name: "UI/UX Design" },
   ];
 
   return (

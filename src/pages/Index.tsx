@@ -13,38 +13,38 @@ const Index = () => {
 
   const featuredProjects = [
     {
-      title: "Income Tax Fraud Detection",
-      description: "A system to detect fraudulent activities in income tax filings using AI and machine learning.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "Machine Learning", "AI"],
+      title: "Event and Booking Management System",
+      description: "A system to manage events and bookings for a local community center.",
+      image: "https://images.unsplash.com/photo-1649433391719-2e784576d044?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Qm9va2luZ3xlbnwwfHwwfHx8MA%3D%3Ds",
+      tags: ["PHP", "JavaScript", "SQL","HTML","CSS","Bootstrap"],
       link: "/projects",
-      code: "https://github.com/oxBinaryBrain/An_Income_Tax_Fraud_Detection_Using_AI-ML"
+      code: ""
     },
     {
-      title: "Oral Cancer Classification using Neural Networks",
-      description: "Machine learning model to detect and classify oral cancer levels from images.",
+      title: "InternNet: A Smart  OJT Placement and Management Portal",
+      description: "A web application to help OJT employers manage their placement process and students.",
       image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "TensorFlow", "Neural Networks"],
+      tags: ["PHP", "JavaScript", "SQL","HTML","CSS","Tailwind"],
       link: "/projects",
-      code: "https://github.com/oxBinaryBrain/Oral_Cancer_Classification"
+      code: ""
     },
     {
-      title: "Credit Card Fraud Detection",
-      description: "Machine learning model to analyze whether a credit card transaction is fraudulent or not.",
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8",
-      tags: ["Python", "ML", "Data Science"],
+      title: "Manual Besom: IoT-based sustainable cleaning system",
+      description: "An IoT system to monitor and clean a room using a manual cleaning robot.",
+      image: "https://images.unsplash.com/photo-1559819614-81fea9efd090?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fEFyZHVpbm98ZW58MHx8MHx8fDA%3D",
+      tags: ["C++", "Arduino", "ESP8266"],
       link: "/projects",
-      code: "https://github.com/oxBinaryBrain/CC-Fraud-Detection"
+      code: ""
     },
   ];
 
   const techStack = [
-    { name: "Python", proficiency: 90 },
-    { name: "JavaScript", proficiency: 85 },
-    { name: "React.js", proficiency: 80 },
-    { name: "Node.js", proficiency: 75 },
-    { name: "Firebase", proficiency: 70 },
-    { name: "Next.js", proficiency: 65 },
+    { name: "PHP", proficiency: 80 },
+    { name: "JavaScript", proficiency: 70 },
+    { name: "React.js", proficiency: 70 },
+    { name: "Node.js", proficiency: 60 },
+    { name: "C++", proficiency: 60 },
+    { name: "Next.js", proficiency: 70 },
   ];
 
   return (
@@ -118,7 +118,7 @@ const Index = () => {
                 <Briefcase className="w-8 h-8 text-teal-400" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-center">
-                AI & Machine Learning
+                IoT & Smart Systems
               </h3>
               <p className="text-muted-foreground text-center">
                 Specializing in information systems and business technology solutions.

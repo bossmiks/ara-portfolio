@@ -30,121 +30,125 @@ const Resume = () => {
 
   const education = [
     {
-      institution: "Southern Luzon Technological College Institute",
-      degree: "Bachelor of Science in Information System (BSIS)",
-      field: "Information System & Engineering (IoT & Smart Systems)",
+      institution: "Southern Luzon Technological College Institute Foundation",
+      degree: "Bachelor Degree",
+      field: "Bachelor of Science in Information System (Specialization in Web Development and IoT & Smart Systems)",
       duration: "2021 - 2025",
-      gpa: "3.0/4.0",
-      location: "Lucena City, Quezon",
+      gpa: "1.25",
+      location: "Legazpi City, Albay",
     },
     {
       institution: "Sorsogon National High School",
       degree: "Senior High School",
       field: "TVL-Drafting and Animation",
       duration: "2019 - 2021",
-      gpa: "85%",
+      gpa: "91%",
       location: "Sorsogon City, Sorsogon",
     },
   ];
 
   const experience = [
+
+     {
+    position: "Software Engineer Full-time",
+    company: "Quanby Solution, Inc.",
+    duration: "Present",
+    description: "Designing, developing, and maintaining scalable web applications by implementing full-stack solutions, optimizing performance, and ensuring high-quality user experiences.",
+responsibilities: [
+  "Built and optimized front-end interfaces with React, JavaScript, HTML, and CSS to deliver responsive and user-friendly designs",
+  "Developed and maintained RESTful APIs and backend services using Node.js and Express",
+  "Integrated and managed relational and cloud databases (MySQL, Supabase) for efficient data handling",
+  "Collaborated with cross-functional teams to deliver new features, resolve issues, and improve system reliability",
+  "Implemented best practices in version control, documentation, and code reviews to maintain high development standards"
+]
+    },
+    
+      {
+     position: "Web Developer Intern",
+    company: "Quanby Solution, Inc.",
+    duration: "June 2023 - 2024",
+    description: "Assisted in developing and maintaining web applications, contributing to front-end and back-end features while gaining hands-on experience in modern web technologies.",
+responsibilities: [
+  "Developed responsive front-end interfaces using HTML, CSS, JavaScript, and React",
+  "Assisted in building RESTful APIs and server-side features with Node.js and Express",
+  "Worked with databases (MySQL, Supabase) for data storage and retrieval",
+  "Collaborated with the development team on debugging, testing, and feature enhancements",
+  "Maintained documentation and participated in code reviews to improve code quality"
+]
+    },
     {
       position: "Freelance Developer",
       company: "Self-employed",
       duration: "January 2023 - Present",
-      description: "Working as a freelance developer on various projects, specializing in web development and AI solutions.",
-      responsibilities: [
-        "Developed full-stack web applications for clients using React, Node.js, and MongoDB",
-        "Created AI-powered solutions for data analysis and automation",
-        "Managed project timelines and client communication",
-        "Integrated AI tools into development workflows for improved efficiency"
-      ]
-    },
-    {
-      position: "Web Developer Intern",
-      company: "SkillCraft Technologies",
-      duration: "November 2024 - December 2024",
-      description: "Developed and maintained web applications using React.js and Node.js. Collaborated with senior developers to implement new features and fix bugs.",
-      responsibilities: [
-        "Developed responsive front-end interfaces using React.js",
-        "Implemented RESTful APIs using Node.js and Express",
-        "Participated in code reviews and team meetings",
-        "Optimized applications for maximum speed and scalability"
-      ]
-    },
-    {
-      position: "Open Source Contributor",
-      company: "GitHub Community",
-      duration: "January 2022 - Present",
-      description: "Actively contributed to various open-source projects, focusing on web development and machine learning libraries.",
-      responsibilities: [
-        "Fixed bugs and implemented new features in popular repositories",
-        "Collaborated with developers worldwide through pull requests",
-        "Improved documentation for better user experience",
-        "Participated in code reviews and discussions"
-      ]
+      description: "Working as a freelance developer on various projects, specializing in web development and IoT & Smart Systems.",
+     responsibilities: [
+  "Designed and deployed full-stack web applications using modern frameworks (React, Node.js)",
+  "Developed IoT-based solutions integrating microcontrollers, sensors, and cloud services",
+  "Collaborated with clients to gather requirements and deliver tailored solutions",
+  "Ensured code quality, documentation, and scalable project architecture"
+]
     },
   ];
 
   const projects = [
     {
-      title: "Income Tax Fraud Detection",
-      description: "Developed an AI-powered system to detect fraudulent activities in income tax filings using machine learning algorithms and data pattern analysis.",
-      technologies: ["Python", "Machine Learning", "AI", "Data Analysis", "TensorFlow"],
-      duration: "03/2023 - 04/2023",
-      type: "Open-source",
+      title: "Event and Booking Management System",
+      description: "A system to manage events and bookings for a local community center.",
+      technologies: ["PHP", "JavaScript", "SQL", "HTML", "CSS", "Bootstrap"],
+      duration: "01/2024 - 04/2024",
+      type: "Web Development",
       accomplishments: [
-        "Created custom algorithms to identify suspicious patterns in tax filings",
-        "Implemented a dashboard to visualize fraud detection metrics",
-        "Achieved 92% accuracy in identifying fraudulent transactions"
+        "Developed comprehensive booking system with calendar integration",
+        "Implemented user authentication and role-based access control",
+        "Created responsive interface for both desktop and mobile users"
       ]
     },
     {
-      title: "Oral Cancer Detection",
-      description: "Built a deep learning model to detect and classify oral cancer stages from medical images, helping in early diagnosis and treatment planning.",
-      technologies: ["Python", "TensorFlow", "Neural Networks", "Computer Vision", "OpenCV"],
-      duration: "05/2023 - 08/2023",
-      type: "2nd Year Project",
+      title: "InternNet: A Smart OJT Placement and Management Portal",
+      description: "A web application to help OJT employers manage their placement process and students.",
+      technologies: ["PHP", "JavaScript", "SQL", "HTML", "CSS", "Bootstrap"],
+      duration: "08/2023 - 12/2023",
+      type: "Academic Project",
       accomplishments: [
-        "Conducted data collection and preprocessing for oral cancer detection",
-        "Designed and implemented a machine learning model for image classification using CNNs",
-        "Achieved 89% accuracy in detecting early-stage oral cancer"
+        "Built matching algorithm for students and employers",
+        "Implemented document management system for OJT requirements",
+        "Created dashboard for tracking student progress and evaluations"
       ]
     },
     {
-      title: "Object Tracking using OpenCV",
-      description: "Developed an object detection and tracking system using OpenCV and KCF Tracker that can identify and follow objects in video streams.",
-      technologies: ["Python", "OpenCV", "Computer Vision", "AI"],
-      duration: "03/2023 - 04/2023",
-      type: "Open-source",
+      title: "Manual Besom: IoT-based sustainable cleaning system",
+      description: "An IoT system to monitor and clean a room using a manual cleaning robot.",
+      technologies: ["C++", "Arduino", "ESP8266"],
+      duration: "03/2024 - 06/2024",
+      type: "IoT Project",
       accomplishments: [
-        "Developed an open-source AI project for object detection using encoded data",
-        "Utilized compatible video sources to recognize objects seen through a camera",
-        "Implemented real-time tracking with minimal latency"
+        "Designed autonomous navigation system for cleaning robot",
+        "Integrated multiple sensors for obstacle detection and mapping",
+        "Implemented remote monitoring through mobile application"
       ]
     },
     {
-      title: "Credit Card Fraud Detection",
-      description: "Created a machine learning model to analyze whether credit card transactions are fraudulent by identifying unusual patterns and anomalies.",
-      technologies: ["Python", "Machine Learning", "Data Science", "Statistical Analysis"],
-      duration: "01/2023 - 03/2023",
-      type: "Personal Project",
+      title: "Smart Trash Bin: Automated waste management with Arduino",
+      description: "An IoT system to monitor and manage waste disposal using an Arduino board.",
+      technologies: ["C++", "Arduino", "Ultrasonic Sensor"],
+      duration: "09/2023 - 11/2023",
+      type: "IoT Project",
       accomplishments: [
-        "Trained models on large datasets of transaction data",
-        "Implemented feature engineering to improve detection accuracy",
-        "Developed a real-time alert system for suspicious transactions"
+        "Developed automatic lid opening mechanism using servo motors",
+        "Implemented waste level monitoring with real-time notifications",
+        "Created data logging system for waste management analytics"
       ]
     },
     {
-      title: "Contextualized Topic Modeling",
-      description: "Built a Python package to run contextualized topic modeling with BERT embeddings, enabling more accurate text analysis and categorization.",
-      technologies: ["Python", "NLP", "BERT", "Machine Learning"],
-      duration: "11/2022 - 01/2023",
-      type: "Research Project",
+      title: "Personal Portfolio",
+      description: "A responsive personal portfolio website showcasing projects and skills.",
+      technologies: ["React", "Node.js", "HTML", "CSS"],
+      duration: "05/2024 - 07/2024",
+      type: "Web Development",
       accomplishments: [
-        "Created a reusable library for topic modeling tasks",
-        "Implemented BERT embeddings for improved contextual understanding",
-        "Published package with documentation for community use"
+        "Built modern responsive design with smooth animations",
+        "Implemented contact form with email integration",
+        "Optimized for SEO and fast loading performance"
       ]
     },
   ];
@@ -301,7 +305,7 @@ const Resume = () => {
             <div className="mt-4 pl-4 border-l-2 border-brand-purple/30">
               <h4 className="font-medium mb-2">Key Courses:</h4>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                {edu.institution.includes("Presidency") ? (
+                {edu.institution.includes("Southern Luzon") ? (
                   <>
                     <li className="text-sm flex items-center">
                       <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
@@ -335,24 +339,32 @@ const Resume = () => {
                       <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
                       Information Security & Assurance
                     </li>
+                    <li className="text-sm flex items-center">
+                      <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
+                      Web Technologies
+                    </li>
+                    <li className="text-sm flex items-center">
+                      <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
+                      Cloud Computing
+                    </li>
                   </>
                 ) : (
                   <>
                     <li className="text-sm flex items-center">
                       <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
-                      Physics
+                      Technical Drafting
                     </li>
                     <li className="text-sm flex items-center">
                       <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
-                      Chemistry
+                      Computer-Aided Design
                     </li>
                     <li className="text-sm flex items-center">
                       <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
-                      Mathematics
+                      2D/3D Animation
                     </li>
                     <li className="text-sm flex items-center">
                       <span className="h-1.5 w-1.5 bg-brand-purple rounded-full mr-2"></span>
-                      Information System
+                      Digital Graphics
                     </li>
                   </>
                 )}

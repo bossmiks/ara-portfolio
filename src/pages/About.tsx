@@ -11,16 +11,16 @@ const About = () => {
   }, []);
 
   const skills = [
-    { name: "Python", level: "Advanced" },
-    { name: "JavaScript", level: "Advanced" },
+    { name: "PHP", level: "Advanced" },
+    { name: "JavaScript", level: "Intermediate" },
     { name: "React.js", level: "Intermediate" },
     { name: "Node.js", level: "Intermediate" },
     { name: "Next.js", level: "Intermediate" },
     { name: "C++", level: "Intermediate" },
-    { name: "Machine Learning", level: "Intermediate" },
+    { name: "Angular", level: "Advanced" },
     { name: "CSS", level: "Intermediate" },
-    { name: "Blockchain", level: "Beginner" },
-    { name: "AI", level: "Intermediate" },
+    { name: "Python", level: "Intermediate" },
+    { name: "AI", level: "Beginner" },
   ];
 
   return (
