@@ -12,7 +12,7 @@ const PrintableResume = () => {
     link.href = "/resume.pdf";
     
     // Set the download attribute to suggest a filename
-    link.download = "uday-g-resume.pdf";
+    link.download = "ara-resume.pdf";
     
     // Append the link to the document
     document.body.appendChild(link);

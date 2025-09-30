@@ -7,39 +7,35 @@ const SkillsSection = () => {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const skills = [
-    { name: "JavaScript", category: "Frontend", color: "#F7DF1E", bgColor: "bg-yellow-500/20" },
-    { name: "Python", category: "AI/ML", color: "#3776AB", bgColor: "bg-blue-500/20" },
-    { name: "R-Programming", category: "AI/ML", color: "#276DC3", bgColor: "bg-blue-600/20" },
-    { name: "NextJS", category: "Frontend", color: "#000000", bgColor: "bg-gray-900/20" },
-    { name: "ReactJs", category: "Frontend", color: "#61DAFB", bgColor: "bg-cyan-500/20" },
-    { name: "HTML", category: "Frontend", color: "#E34F26", bgColor: "bg-red-500/20" },
-    { name: "CSS", category: "Frontend", color: "#1572B6", bgColor: "bg-blue-600/20" },
-    { name: "BootStrap", category: "Frontend", color: "#7952B3", bgColor: "bg-purple-600/20" },
-    { name: "Tailwind", category: "Frontend", color: "#06B6D4", bgColor: "bg-cyan-500/20" },
-    { name: "Node.JS", category: "Backend", color: "#339933", bgColor: "bg-green-600/20" },
-    { name: "Express.JS", category: "Backend", color: "#000000", bgColor: "bg-red-900/20" },
-    { name: "MongoDB", category: "Database", color: "#47A248", bgColor: "bg-green-500/20" },
-    { name: "MySQL", category: "Database", color: "#4479A1", bgColor: "bg-blue-500/20" },
-    { name: "GitHub", category: "Tool", color: "#181717", bgColor: "bg-gray-900/20" },
-    { name: "VSCode", category: "Tool", color: "#181717", bgColor: "bg-blue-900/20" },
-    { name: "Git", category: "Tool", color: "#F05032", bgColor: "bg-red-500/20" },
-    { name: "Pandas", category: "AI/ML", color: "#150458", bgColor: "bg-indigo-900/20" },
-    { name: "Numpy", category: "AI/ML", color: "#013243", bgColor: "bg-purple -900/20" },
-    { name: "Matplotlib", category: "AI/ML", color: "#11557C", bgColor: "bg-blue-700/20" },
-    { name: "OpenCV", category: "AI/ML", color: "#5C3EE8", bgColor: "bg-purple-600/20" },
-    { name: "Tensorflow", category: "AI/ML", color: "#FF6F00", bgColor: "bg-orange-600/20" },
-    { name: "Vue.JS", category: "Frontend", color: "#F24E1E", bgColor: "bg-indigo-900/20" },
-    { name: "Firebase", category: "Database", color: "#F24E1E", bgColor: "bg-red-500/20" },
+    { name: "JavaScript", category: "Frontend", color: "#F7DF1E", bgColor: "bg-yellow-500/20", icon: "devicon-javascript-plain" },
+    { name: "Python", category: "Backend", color: "#3776AB", bgColor: "bg-blue-500/20", icon: "devicon-python-plain" },
+    { name: "NextJS", category: "Frontend", color: "#FFFFFF", bgColor: "bg-gray-900/20", icon: "devicon-nextjs-plain" },
+    { name: "ReactJs", category: "Frontend", color: "#61DAFB", bgColor: "bg-cyan-500/20", icon: "devicon-react-original" },
+    { name: "HTML", category: "Frontend", color: "#E34F26", bgColor: "bg-red-500/20", icon: "devicon-html5-plain" },
+    { name: "CSS", category: "Frontend", color: "#1572B6", bgColor: "bg-blue-600/20", icon: "devicon-css3-plain" },
+    { name: "BootStrap", category: "Frontend", color: "#7952B3", bgColor: "bg-purple-600/20", icon: "devicon-bootstrap-plain" },
+    { name: "Tailwind", category: "Frontend", color: "#06B6D4", bgColor: "bg-cyan-500/20", icon: "devicon-tailwindcss-plain" },
+    { name: "Node.JS", category: "Backend", color: "#339933", bgColor: "bg-green-600/20", icon: "devicon-nodejs-plain" },
+    { name: "Express.JS", category: "Backend", color: "#000000", bgColor: "bg-red-900/20", icon: "devicon-express-original" },
+    { name: "MySQL", category: "Database", color: "#4479A1", bgColor: "bg-blue-500/20", icon: "devicon-mysql-plain" },
+    { name: "GitHub", category: "Tool", color: "#181717", bgColor: "bg-gray-900/20", icon: "devicon-github-original" },
+    { name: "VSCode", category: "Tool", color: "#007ACC", bgColor: "bg-blue-900/20", icon: "devicon-vscode-plain" },
+    { name: "Git", category: "Tool", color: "#F05032", bgColor: "bg-red-500/20", icon: "devicon-git-plain" },
+    { name: "Vue.JS", category: "Frontend", color: "#F24E1E", bgColor: "bg-indigo-900/20", icon: "devicon-vuejs-plain" },
+    { name: "PHP", category: "Backend", color: "#FF6F00", bgColor: "bg-orange-600/20", icon: "devicon-php-plain" },
+    { name: "Laravel", category: "Frontend", color: "#FF2D20", bgColor: "bg-red-600/20", icon: "devicon-laravel-plain" },
+    { name: "CodeIgniter", category: "Frontend", color: "#EF4223", bgColor: "bg-red-500/20", icon: "devicon-codeigniter-plain" },
+    { name: "Prisma", category: "Database", color: "#2D3748", bgColor: "bg-blue-500/20", icon: "devicon-prisma-original" },
+    { name: "Supabase", category: "Database", color: "#3ECF8E", bgColor: "bg-green-500/20", icon: "devicon-supabase-plain" },
     
   ];
 
-  const categories = ["All","Frontend", "AI/ML", "Backend", "Databases", "Tools"];
+  const categories = ["All","Frontend", "Backend", "Databases", "Tools"];
 
   const filteredSkills = activeFilter === "All" 
     ? skills 
     : skills.filter(skill => {
         if (activeFilter === "Frontend") return skill.category === "Frontend" || skill.category === "Language";
-        if (activeFilter === "AI/ML") return skill.category === "AI/ML";
         if (activeFilter === "Backend") return skill.category === "Backend";
         if (activeFilter === "Databases") return skill.category === "Database";
         if (activeFilter === "Tools") return skill.category === "Tool" || skill.category === "Framework";
@@ -143,7 +139,7 @@ const SkillsSection = () => {
                 boxShadow: "0 10px 30px -5px rgba(155, 135, 245, 0.4)",
               }}
             >
-              <i className={`${getSkillIcon(skill.name)} text-3xl`} style={{ color: skill.color }}></i>
+              <i className={`${skill.icon || getSkillIcon(skill.name)} text-3xl`} style={{ color: skill.color }}></i>
               
               {/* Shine effect on hover */}
               <motion.div

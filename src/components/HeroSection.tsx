@@ -209,7 +209,7 @@ const HeroSection = () => {
                 {/* Skills grid */}
                 <SkillCard 
                   icon={Code}
-                  title="Python"
+                  title="PHP"
                   description="Expert level proficiency"
                   className="col-span-3 row-span-2"
                 />

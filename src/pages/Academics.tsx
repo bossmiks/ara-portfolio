@@ -15,7 +15,7 @@ const Academics = () => {
   const education = [
     {
       id: 1,
-      institution: "Southern Luzon Technological College Institute Foundation",
+      institution: "Southern Luzon Technological College Foundation, Inc.",
       degree: "Bachelor Degree",
       field: "Bachelor of Science in Information System (Specialization in Web Development and IoT & Smart Systems)",
       duration: "2021 - 2025",
@@ -43,7 +43,7 @@ const Academics = () => {
     },
     {
       id: 3,
-      institution: "Sorsogn National High School",
+      institution: "Sorsogon National High School",
       degree: "Junior High School",
       field: "K-12 curriculum",
       duration: "2015 - 2019",
@@ -59,32 +59,33 @@ const Academics = () => {
   const certifications = [
     {
       id: 1,
-      name: "Python Programming",
-      issuer: "Coursera",
-      date: "2022",
-      description: "Comprehensive course covering advanced Python concepts and applications."
+      name: "Security Operatoins Fundamentals",
+      issuer: "paloalto",
+      date: "December 2023",
+      description: "Comprehensive training on security operations, incident response, and threat detection."
     },
     {
       id: 2,
-      name: "Web Development with JavaScript",
-      issuer: "Udemy",
-      date: "2022",
-      description: "In-depth training on building modern web applications using JavaScript."
+      name: "Cloud Security Fundamentals",
+      issuer: "paloalto",
+      date: "December 2023",
+      description: "In-depth training on cloud security, identity and access management, and threat detection."
     },
     {
       id: 3,
-      name: "Machine Learning Fundamentals",
-      issuer: "edX",
-      date: "2023",
-      description: "Introduction to machine learning algorithms and their implementation."
+      name: "Network Security Fundamentals",
+      issuer: "paloalto",
+      date: "January 2024",
+      description: "Introduction to network security, firewalls, and intrusion detection systems."
     },
     {
       id: 4,
-      name: "React.js Development",
-      issuer: "freeCodeCamp",
-      date: "2023",
-      description: "Building interactive user interfaces with React.js framework."
-    }
+      name: "Internet Computer Protocol (ICP) Blockchain",
+      issuer: "SparkPoint",
+      date: "March 2023",
+      description: "Training on Internet Computer Protocol, blockchain technology, and smart contracts."
+    },
+
   ];
 
   const courseHighlights = [

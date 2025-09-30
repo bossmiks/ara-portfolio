@@ -30,7 +30,7 @@ const Resume = () => {
 
   const education = [
     {
-      institution: "Southern Luzon Technological College Institute Foundation",
+      institution: "Southern Luzon Technological College Foundation, Inc.",
       degree: "Bachelor Degree",
       field: "Bachelor of Science in Information System (Specialization in Web Development and IoT & Smart Systems)",
       duration: "2021 - 2025",
@@ -59,7 +59,6 @@ responsibilities: [
   "Developed and maintained RESTful APIs and backend services using Node.js and Express",
   "Integrated and managed relational and cloud databases (MySQL, Supabase) for efficient data handling",
   "Collaborated with cross-functional teams to deliver new features, resolve issues, and improve system reliability",
-  "Implemented best practices in version control, documentation, and code reviews to maintain high development standards"
 ]
     },
     
@@ -73,7 +72,6 @@ responsibilities: [
   "Assisted in building RESTful APIs and server-side features with Node.js and Express",
   "Worked with databases (MySQL, Supabase) for data storage and retrieval",
   "Collaborated with the development team on debugging, testing, and feature enhancements",
-  "Maintained documentation and participated in code reviews to improve code quality"
 ]
     },
     {
@@ -155,39 +153,53 @@ responsibilities: [
 
   const certifications = [
     {
-      name: "API Prototyping Learning Path",
-      issuer: "Postman",
-      date: "December 2024",
-      skills: "API Prototyping, API Testing, API Documentation",
-      credential: "PST-APL-2024"
+      name: "Security Operatoins Fundamentals",
+      issuer: "paloalto",
+      date: "December 2023",
+      skills: "Security Operations, Incident Response, Threat Detection",
+      credential: "PST-SOF-2023"
     },
     {
-      name: "Career Essentials in Generative AI",
-      issuer: "Microsoft and LinkedIn",
-      date: "November 2024",
-      skills: "Generative AI, Prompt Engineering, LLM Applications",
-      credential: "MSLI-GAI-2024"
+      name: "Cloud Security Fundamentals",
+      issuer: "paloalto",
+      date: "December 2023",
+      skills: "Cloud Security, Identity and Access Management, Threat Detection",
+      credential: "MSLI-CSF-2023"
     },
     {
-      name: "Learning Microsoft Power BI",
-      issuer: "Infosys Springboard",
-      date: "November 2024",
-      skills: "Microsoft Power BI, Data Visualization, Business Intelligence",
-      credential: "ISB-PBI-2024"
-    },
-    {
-      name: "Neural Networks and Deep Learning",
-      issuer: "Great Learning",
+      name: "Network Security Fundamentals",
+      issuer: "paloalto",
       date: "January 2024",
-      skills: "Neural Networks, Deep Learning, AI Architecture",
-      credential: "GL-NNDL-2024"
+      skills: "Network Security, Firewalls, Intrusion Detection",
+      credential: "ISB-NSF-2024"
     },
     {
-      name: "Real Life Machine Learning and Data Science Projects",
-      issuer: "Udemy",
-      date: "November 2022",
-      skills: "Machine Learning, Data Science, Practical Implementation",
-      credential: "UC-e1c70903-b810-4b6b-8749-eebd3345715"
+      name: "Internet Computer Protocol (ICP) Blockchain",
+      issuer: "SparkPoint",
+      date: "March 2023",
+      skills: "Internet Computer Protocol, Blockchain, Smart Contracts",
+      credential: "SP-ICP-2023"
+    },
+    {
+      name: "DEVCON Legazpi Code Camp Mentors Training",
+      issuer: "DEVCON Legazpi",
+      date: "April 2024",
+      skills: "Mentorship, Software Development, Problem Solving, Collaboration, Leadership",
+      credential: "DEVCON-LEG-2024"
+    },
+      {
+      name: "Node key NFT Workshop",
+      issuer: "BitPinas",
+      date: "June 2024",
+      skills: "Blockchain, NFTs, Smart Contracts, Web3 Development, Digital Asset Management",
+      credential: "BP-NFT-2024"
+    },
+      {
+      name: "Philippines Startup Awareness of the DICT2023",
+      issuer: "BitPinas",
+      date: "May 2023",
+       skills: "Startup Ecosystem, Entrepreneurship, Innovation, Business Development, Tech Industry Awareness",
+      credential: "BP-SAW-2023"
     },
   ];
 

@@ -73,22 +73,30 @@ const About = () => {
               <h2 className="text-3xl font-bold mb-6">
                 <AnimatedText text="Who am I?" once />
               </h2>
+              <div className="mb-6">
+                <motion.p 
+                  className="text-lg font-medium text-brand-purple italic"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.4 }}
+                >
+                  "Turning Ideas into Smart, Connected Solutions"
+                </motion.p>
+              </div>
               <div className="space-y-4 text-muted-foreground">
                 <p>
                   I'm <motion.span 
                     className="text-brand-purple font-semibold"
                     whileHover={{ color: "#8B5CF6" }}
-                  >Michael Noja Ara Jr.</motion.span>, a Information System student specializing in IoT & Smart Systems at Southern Luzon Technological College Institute.
+                  >Michael Noja Ara Jr.</motion.span>, an Information Systems student specializing in IoT & Smart Systems at Southern Luzon Technological College Foundation, Inc.
                 </p>
                 <p>
-                  My journey in programming began with an interest in creating digital solutions and innovative applications. This led me to explore various programming languages and technologies, with a focus on information systems and smart technology integration.
+                  My journey in programming began with creating digital solutions and innovative applications. I focus on information systems and smart technology integration.
                 </p>
                 <p>
-                  I'm passionate about developing information systems and smart applications that bridge the gap between technology and business needs. I believe in continuous learning and staying updated with emerging technologies in the digital landscape.
+                  I'm passionate about developing systems that bridge technology and business needs. I believe in continuous learning and staying updated with emerging technologies.
                 </p>
-                <p>
-                  When I'm not coding, I enjoy researching emerging technologies, analyzing business processes, working on system optimization projects and exploring digital innovation trends.
-                </p>
+
               </div>
             </motion.div>
           </div>

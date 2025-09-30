@@ -96,17 +96,6 @@ export const Layout = ({ children }: LayoutProps) => {
                   <Linkedin className="h-5 w-5" />
                 </motion.a>
                 <motion.a
-                  href=""
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-brand-purple transition-colors bg-secondary p-3 rounded-full"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  aria-label="Twitter"
-                >
-                  <Twitter className="h-5 w-5" />
-                </motion.a>
-                <motion.a
                   href="mailto:aramichae19@gmail.com"
                   className="text-muted-foreground hover:text-brand-purple transition-colors bg-secondary p-3 rounded-full"
                   whileHover={{ scale: 1.1 }}
