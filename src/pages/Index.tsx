@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Layout from "@/components/Layout";
 import HeroSection from "@/components/HeroSection";
 import { motion } from "framer-motion";
-import { ArrowRight, Code, GraduationCap, Briefcase, Star, ExternalLink, Github } from "lucide-react";
+import { ArrowRight, Code, GraduationCap, Briefcase, Star, ExternalLink, Github, Monitor, Cpu, Settings } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -51,7 +51,7 @@ const Index = () => {
     <Layout>
       <HeroSection />
 
-      {/* About Section */}
+      {/* My Service Section */}
       <section className="py-24 bg-secondary/50">
         <div className="container mx-auto px-4">
           <motion.div
@@ -62,11 +62,11 @@ const Index = () => {
             className="text-center mb-16"
           >
             <span className="inline-block py-1 px-3 rounded-full text-xs font-medium bg-teal-500/10 text-teal-400 mb-4">
-              About Me
+              My Service
             </span>
-            <h2 className="text-4xl font-bold mb-6">Who I Am</h2>
+            <h2 className="text-4xl font-bold mb-6">What I Offer</h2>
             <p className="max-w-3xl mx-auto text-muted-foreground">
-              I'm a Information System student specializing in IoT & Smart Systems. Passionate about programming, IoT integration, and building innovative connected applications.
+              Professional services in web development, IoT systems, and information technology solutions tailored to your needs.
             </p>
           </motion.div>
 
@@ -79,13 +79,13 @@ const Index = () => {
               className="glass-panel p-8 rounded-lg"
             >
               <div className="flex items-center justify-center w-16 h-16 bg-teal-500/10 rounded-lg mb-6 mx-auto">
-                <Code className="w-8 h-8 text-teal-400" />
+                <Monitor className="w-8 h-8 text-teal-400" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-center">
                 Web Development
               </h3>
               <p className="text-muted-foreground text-center">
-                Experienced in building modern, responsive web applications using React.js, Next.js, and Node.js.
+                Custom web applications, responsive websites, and modern frontend solutions using React, PHP, and JavaScript.
               </p>
             </motion.div>
 
@@ -97,13 +97,13 @@ const Index = () => {
               className="glass-panel p-8 rounded-lg"
             >
               <div className="flex items-center justify-center w-16 h-16 bg-teal-500/10 rounded-lg mb-6 mx-auto">
-                <GraduationCap className="w-8 h-8 text-teal-400" />
+                <Cpu className="w-8 h-8 text-teal-400" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-center">
-                Information System
+                IoT Solutions
               </h3>
               <p className="text-muted-foreground text-center">
-                Strong foundation in algorithms, data structures, and programming principles.
+                Smart device integration, Arduino-based systems, and connected solutions for automation and monitoring.
               </p>
             </motion.div>
 
@@ -115,32 +115,16 @@ const Index = () => {
               className="glass-panel p-8 rounded-lg"
             >
               <div className="flex items-center justify-center w-16 h-16 bg-teal-500/10 rounded-lg mb-6 mx-auto">
-                <Briefcase className="w-8 h-8 text-teal-400" />
+                <Settings className="w-8 h-8 text-teal-400" />
               </div>
               <h3 className="text-xl font-semibold mb-4 text-center">
-                IoT & Smart Systems
+                System Analysis
               </h3>
               <p className="text-muted-foreground text-center">
-                Specializing in information systems and business technology solutions.
+                Business process optimization, database design, and information system consulting for enterprises.
               </p>
             </motion.div>
           </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mt-12 text-center"
-          >
-            <Link
-              to="/about"
-              className="inline-flex items-center px-6 py-3 bg-teal-500 text-white rounded-lg font-medium hover:bg-opacity-90 transition-all"
-            >
-              More About Me
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </motion.div>
         </div>
       </section>
 

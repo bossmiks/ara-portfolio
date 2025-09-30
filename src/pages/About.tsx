@@ -70,9 +70,6 @@ const About = () => {
               transition={{ duration: 0.5, delay: 0.3 }}
               className="flex flex-col justify-center"
             >
-              <h2 className="text-3xl font-bold mb-6">
-                <AnimatedText text="Who am I?" once />
-              </h2>
               <div className="mb-6">
                 <motion.p 
                   className="text-lg font-medium text-brand-purple italic"
