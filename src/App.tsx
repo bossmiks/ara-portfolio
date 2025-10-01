@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { ThemeProvider } from "./components/ThemeProvider";
+import Chatbot from "./components/Chatbot";
 
 // Pages
 import Index from "./pages/Index";
@@ -40,6 +41,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
+          <Chatbot />
         </BrowserRouter>
       </ThemeProvider>
     </TooltipProvider>
