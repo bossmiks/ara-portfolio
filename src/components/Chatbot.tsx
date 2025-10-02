@@ -208,15 +208,94 @@ const Chatbot: React.FC = () => {
       };
     }
     
+    // Mobile app development
+    if (msg.includes('mobile') || msg.includes('app development') || msg.includes('android') || msg.includes('ios') || msg.includes('flutter') || msg.includes('react native')) {
+      updateUserContext(message, 'mobile');
+      return {
+        text: "📱 Michael offers mobile app development services using React Native and Flutter. He creates cross-platform apps with native performance and seamless user experiences for both iOS and Android.",
+        actions: [
+          { label: "Contact for Mobile App", action: openEmail, icon: <Mail size={16} /> },
+          { label: "View Tech Skills", action: () => navigateToPage('about'), icon: <Code size={16} /> },
+          { label: "See Projects", action: () => navigateToPage('projects'), icon: <ExternalLink size={16} /> }
+        ]
+      };
+    }
+
+    // API development
+    if (msg.includes('api') || msg.includes('backend') || msg.includes('server') || msg.includes('database') || msg.includes('rest') || msg.includes('graphql')) {
+      updateUserContext(message, 'api');
+      return {
+        text: "🔧 Michael provides API development and backend services using Node.js, Express, and various databases. He builds scalable REST APIs, GraphQL endpoints, and robust server architectures.",
+        actions: [
+          { label: "Discuss API Project", action: openEmail, icon: <Mail size={16} /> },
+          { label: "View Skills", action: () => navigateToPage('about'), icon: <Code size={16} /> },
+          { label: "Contact Michael", action: () => navigateToPage('contact'), icon: <Phone size={16} /> }
+        ]
+      };
+    }
+
+    // Cloud services
+    if (msg.includes('cloud') || msg.includes('aws') || msg.includes('azure') || msg.includes('deployment') || msg.includes('hosting') || msg.includes('devops')) {
+      updateUserContext(message, 'cloud');
+      return {
+        text: "☁️ Michael offers cloud deployment and DevOps services using AWS, Azure, and modern deployment pipelines. He handles server setup, CI/CD, monitoring, and scalable cloud architectures.",
+        actions: [
+          { label: "Cloud Consultation", action: openEmail, icon: <Mail size={16} /> },
+          { label: "View Experience", action: () => navigateToPage('resume'), icon: <Download size={16} /> },
+          { label: "Discuss Project", action: () => navigateToPage('contact'), icon: <Phone size={16} /> }
+        ]
+      };
+    }
+
+    // UI/UX design
+    if (msg.includes('design') || msg.includes('ui') || msg.includes('ux') || msg.includes('figma') || msg.includes('prototype') || msg.includes('wireframe')) {
+      updateUserContext(message, 'design');
+      return {
+        text: "🎨 Michael provides UI/UX design services creating intuitive, modern interfaces. He works with Figma, creates prototypes, wireframes, and ensures excellent user experiences across all devices.",
+        actions: [
+          { label: "Design Consultation", action: openEmail, icon: <Mail size={16} /> },
+          { label: "View Portfolio", action: () => navigateToPage('projects'), icon: <ExternalLink size={16} /> },
+          { label: "Contact Designer", action: () => navigateToPage('contact'), icon: <Phone size={16} /> }
+        ]
+      };
+    }
+
+    // Consulting services
+    if (msg.includes('consulting') || msg.includes('consultation') || msg.includes('advice') || msg.includes('strategy') || msg.includes('planning') || msg.includes('architecture')) {
+      updateUserContext(message, 'consulting');
+      return {
+        text: "💡 Michael offers technical consulting services for project planning, architecture design, technology selection, and development strategy. He helps businesses make informed technical decisions.",
+        actions: [
+          { label: "Book Consultation", action: openEmail, icon: <Mail size={16} /> },
+          { label: "View Expertise", action: () => navigateToPage('about'), icon: <Brain size={16} /> },
+          { label: "Contact Now", action: () => navigateToPage('contact'), icon: <Phone size={16} /> }
+        ]
+      };
+    }
+
+    // Maintenance and support
+    if (msg.includes('maintenance') || msg.includes('support') || msg.includes('bug fix') || msg.includes('update') || msg.includes('upgrade') || msg.includes('optimization')) {
+      updateUserContext(message, 'maintenance');
+      return {
+        text: "🔧 Michael provides ongoing maintenance and support services including bug fixes, performance optimization, security updates, and feature enhancements for existing applications.",
+        actions: [
+          { label: "Support Request", action: openEmail, icon: <Mail size={16} /> },
+          { label: "Emergency Contact", action: () => navigateToPage('contact'), icon: <Phone size={16} /> },
+          { label: "View Services", action: () => navigateToPage('about'), icon: <Code size={16} /> }
+        ]
+      };
+    }
+
     // Advanced help with personalization
-    if (msg.includes('help') || msg.includes('what can you do') || msg.includes('capabilities')) {
-      const helpText = `🧠 I'm an advanced AI assistant with conversation intelligence! I can: Navigate the portfolio, Download resources, Provide personalized recommendations, Remember our conversation context, Learn your interests, Connect you with Michael. ${userContext.conversationHistory.length > 0 ? `So far we've discussed ${userContext.askedAbout.join(', ')}.` : 'Just start chatting and I\'ll adapt to help you better!'}`;
+    if (msg.includes('help') || msg.includes('what can you do') || msg.includes('capabilities') || msg.includes('services')) {
+      const helpText = `🧠 I can help you explore Michael's services: Web Development, Mobile Apps, API Development, Cloud Services, UI/UX Design, Technical Consulting, and Maintenance Support. ${userContext.conversationHistory.length > 0 ? `So far we've discussed ${userContext.askedAbout.join(', ')}.` : 'What service interests you most?'}`;
       
       return {
         text: helpText,
         actions: [
-          { label: "Explore Portfolio", action: () => navigateToPage(''), icon: <ExternalLink size={16} /> },
-          { label: "Smart Recommendations", action: () => navigateToPage('projects'), icon: <Sparkles size={16} /> }
+          { label: "All Services", action: () => navigateToPage('about'), icon: <Code size={16} /> },
+          { label: "Get Quote", action: openEmail, icon: <Mail size={16} /> },
+          { label: "View Portfolio", action: () => navigateToPage('projects'), icon: <ExternalLink size={16} /> }
         ]
       };
     }
