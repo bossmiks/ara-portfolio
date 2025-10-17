@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { Github, Linkedin, Twitter, Mail } from "lucide-react";
-import ScrollToTop from "./ScrollToTop";
+
 import ParticleBackground from "./ParticleBackground";
 
 interface LayoutProps {
@@ -112,7 +112,7 @@ export const Layout = ({ children }: LayoutProps) => {
           </div>
         </div>
       </footer>
-      <ScrollToTop />
+
     </div>
   );
 };

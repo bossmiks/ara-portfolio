@@ -1,18 +1,17 @@
 
 import { motion } from "framer-motion";
-import { LucideIcon, Github } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 
 interface ProjectCardProps {
   title: string;
   description: string;
   image: string;
   tags: string[];
-  code: string;
   category: string;
   icon: LucideIcon;
 }
 
-const ProjectCard = ({ title, description, image, tags, code, category, icon: Icon }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, image, tags, category, icon: Icon }: ProjectCardProps) => {
   const getCategoryName = (category: string) => {
     return category === "iot" ? "IoT" : category === "ai" ? "IoT & Smart Systems" : category;
   };
@@ -58,19 +57,6 @@ const ProjectCard = ({ title, description, image, tags, code, category, icon: Ic
           ))}
         </div>
         
-        <div className="flex justify-center">
-          <motion.a
-            href={code}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center text-muted-foreground hover:text-brand-purple transition-colors"
-            whileHover={{ scale: 1.05, color: "#9b87f5" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Github className="mr-1.5 h-4 w-4" />
-            Source Code
-          </motion.a>
-        </div>
       </div>
     </motion.div>
   );

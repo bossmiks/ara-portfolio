@@ -221,7 +221,6 @@ const Projects = () => {
                   description={project.description}
                   image={project.image}
                   tags={project.tags}
-                  code={project.code}
                   category={project.category}
                   icon={getIcon(project.category)}
                 />

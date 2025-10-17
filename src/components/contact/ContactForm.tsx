@@ -35,7 +35,23 @@ const ContactForm = () => {
 
     setIsSubmitting(true);
     
+    // Add timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      setIsSubmitting(false);
+      toast({
+        title: "Request timeout",
+        description: "The request is taking too long. Please check your connection and try again.",
+        variant: "destructive",
+      });
+    }, 10000); // 10 second timeout
+    
     try {
+      // Check if Firebase is properly configured
+      const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
+      if (!apiKey || apiKey === 'your_firebase_api_key_here') {
+        throw new Error("Firebase configuration is missing. Please set up your environment variables.");
+      }
+
       const messageData: ContactMessageInsert = {
         name: formData.name.trim(),
         email: formData.email.trim(),
@@ -44,6 +60,7 @@ const ContactForm = () => {
         user_id: null
       };
       
+      console.log("Submitting message:", messageData);
       const result = await contactService.insertMessage(messageData);
       
       if (result.error) {
@@ -70,12 +87,14 @@ const ContactForm = () => {
       }, 3000);
       
     } catch (error: any) {
+      console.error("Contact form error:", error);
       toast({
         title: "Failed to send message",
         description: error.message || "An unexpected error occurred. Please try again.",
         variant: "destructive",
       });
     } finally {
+      clearTimeout(timeoutId);
       setIsSubmitting(false);
     }
   };

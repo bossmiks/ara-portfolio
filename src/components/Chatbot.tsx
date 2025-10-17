@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot, X, Download, ExternalLink, Calendar, Code, Mail, Phone, Brain, Sparkles } from 'lucide-react';
+import { Send, Bot, X, Download, ExternalLink, Calendar, Code, Mail, Phone, Brain, Sparkles, Cpu, Database } from 'lucide-react';
 
 interface Message {
   id: string;
@@ -22,7 +22,7 @@ interface UserContext {
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', text: '🧠 Hello! I\'m Michael\'s AI assistant powered by advanced conversation intelligence. I learn from our chat to provide personalized help. What brings you to his portfolio today?', isBot: true, timestamp: new Date() }
+    { id: '1', text: '👋 Kamusta! I\'m your AI assistant, powered by advanced conversation intelligence. I\'m here to help you explore Michael\'s amazing portfolio with a personal touch. What brings you here today?', isBot: true, timestamp: new Date() }
   ]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -52,7 +52,7 @@ const Chatbot: React.FC = () => {
   };
 
   const extractInterests = (message: string, currentInterests: string[]): string[] => {
-    const techKeywords = ['react', 'typescript', 'javascript', 'iot', 'web development', 'frontend', 'backend', 'mobile', 'ai', 'machine learning', 'node.js', 'firebase', 'database'];
+    const techKeywords = ['react', 'typescript', 'javascript', 'iot', 'web development', 'frontend', 'backend', 'mobile', 'ai', 'machine learning', 'node.js', 'firebase', 'database', 'arduino', 'esp8266', 'sensors', 'automation', 'smart systems'];
     const found = techKeywords.filter(keyword => 
       message.toLowerCase().includes(keyword) && !currentInterests.includes(keyword)
     );
@@ -101,13 +101,13 @@ const Chatbot: React.FC = () => {
     if (msg.includes('project') || msg.includes('work') || msg.includes('portfolio')) {
       updateUserContext(message, 'projects');
       const personalizedText = hasAskedBefore('projects') 
-        ? `${userContext.name ? userContext.name + ', ' : ''}Since you're interested in projects, here are Michael's most innovative works including IoT solutions and React applications. ${userContext.interests.length > 0 ? `Based on your interest in ${userContext.interests.join(', ')}, you might especially like his tech-focused projects.` : ''}`
-        : "🚀 Michael has worked on cutting-edge projects including IoT solutions, React applications, and modern web technologies. His work focuses on creating smart, connected systems.";
+        ? `${userContext.name ? userContext.name + ', ' : ''}Ah, you're back for more projects! 🎯 Michael's portfolio is full of innovative solutions - from IoT systems to modern web apps. ${userContext.interests.length > 0 ? `Since you're into ${userContext.interests.join(', ')}, you'll love his tech-focused projects!` : ''}`
+        : "🚀 Wow! Michael's projects are seriously impressive - from smart IoT systems to cutting-edge web applications. His work shows real innovation and technical excellence!";
       
       return {
         text: personalizedText,
         actions: [
-          { label: "View Projects", action: () => navigateToPage('projects'), icon: <Code size={16} /> },
+          { label: "Explore Projects", action: () => navigateToPage('projects'), icon: <Code size={16} /> },
           { label: "GitHub Profile", action: openGitHub, icon: <ExternalLink size={16} /> },
           { label: "Technical Skills", action: () => navigateToPage('about'), icon: <Brain size={16} /> }
         ]
@@ -118,13 +118,13 @@ const Chatbot: React.FC = () => {
     if (msg.includes('skill') || msg.includes('tech') || msg.includes('technology') || msg.includes('stack')) {
       updateUserContext(message, 'skills');
       const skillText = isReturningVisitor 
-        ? `${userContext.name ? userContext.name + ', ' : ''}Michael's expertise spans React, TypeScript, IoT development, and modern web technologies. ${userContext.interests.includes('react') ? 'Perfect match for your React interest!' : ''} He also works with Firebase, Node.js, and creates seamless device integrations.`
-        : "💻 Michael specializes in React, TypeScript, JavaScript, IoT development, and modern web technologies. He creates intelligent, connected systems with seamless user experiences.";
+        ? `${userContext.name ? userContext.name + ', ' : ''}Michael's skills are legit impressive! 💪 He's got React, TypeScript, IoT development, and modern web tech down pat. ${userContext.interests.includes('react') ? 'Perfect match for your React interest!' : ''} Plus Firebase, Node.js, and seamless device integrations - the guy's got range!`
+        : "💻 Michael's skill set is seriously diverse - React, TypeScript, JavaScript, IoT development, and modern web technologies. He creates smart, connected systems that actually work beautifully!";
       
       return {
         text: skillText,
         actions: [
-          { label: "View Skills", action: () => navigateToPage('about'), icon: <Code size={16} /> },
+          { label: "Check Skills", action: () => navigateToPage('about'), icon: <Code size={16} /> },
           { label: "Download Resume", action: downloadResume, icon: <Download size={16} /> },
           { label: "See Projects", action: () => navigateToPage('projects'), icon: <Sparkles size={16} /> }
         ]
@@ -135,8 +135,8 @@ const Chatbot: React.FC = () => {
     if (msg.includes('contact') || msg.includes('hire') || msg.includes('email') || msg.includes('reach') || msg.includes('collaborate')) {
       updateUserContext(message, 'contact');
       const contactText = userContext.conversationHistory.some(h => h.includes('project') || h.includes('skill'))
-        ? `${userContext.name ? userContext.name + ', ' : ''}Great! Since you've shown interest in Michael's work, he'd love to discuss potential collaborations or opportunities with you!`
-        : "📧 Ready to connect with Michael? He's always open to discussing new opportunities, collaborations, and innovative projects!";
+        ? `${userContext.name ? userContext.name + ', ' : ''}Awesome! Since you're interested in Michael's work, he'd be thrilled to chat about potential collaborations or opportunities! 🚀`
+        : "📧 Ready to connect with Michael? He's super approachable and always excited to discuss new opportunities, collaborations, and innovative projects!";
       
       return {
         text: contactText,
@@ -180,15 +180,18 @@ const Chatbot: React.FC = () => {
     }
     
     // Personalized greetings
-    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey') || msg.includes('start')) {
+    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey') || msg.includes('start') || msg.includes('kamusta') || msg.includes('mabuhay')) {
+      const currentHour = new Date().getHours();
+      const timeGreeting = currentHour < 12 ? 'Good morning' : currentHour < 18 ? 'Good afternoon' : 'Good evening';
+      
       const greetingText = isReturningVisitor 
-        ? `${userContext.name ? `Welcome back, ${userContext.name}!` : 'Welcome back!'} 👋 Ready to continue exploring Michael's portfolio? ${userContext.interests.length > 0 ? `I remember you're interested in ${userContext.interests.slice(0,2).join(' and ')}.` : ''}`
-        : "👋 Welcome to Michael's portfolio! I'm his AI assistant with advanced conversation intelligence. I'll learn about your interests as we chat to provide personalized recommendations.";
+        ? `${userContext.name ? `Welcome back, ${userContext.name}!` : 'Welcome back!'} 👋 Ready to dive deeper into Michael's amazing portfolio? ${userContext.interests.length > 0 ? `I remember you're into ${userContext.interests.slice(0,2).join(' and ')} - let's explore more!` : ''}`
+        : `👋 ${timeGreeting}! Welcome to Michael's portfolio! I'm your AI assistant with some serious conversation intelligence. I'll learn about your interests as we chat and give you personalized recommendations that actually make sense!`;
       
       return {
         text: greetingText,
         actions: [
-          { label: "View Projects", action: () => navigateToPage('projects'), icon: <Code size={16} /> },
+          { label: "Explore Projects", action: () => navigateToPage('projects'), icon: <Code size={16} /> },
           { label: "Contact Michael", action: () => navigateToPage('contact'), icon: <Mail size={16} /> },
           { label: "Download Resume", action: downloadResume, icon: <Download size={16} /> }
         ]
@@ -286,9 +289,87 @@ const Chatbot: React.FC = () => {
       };
     }
 
+    // Technology discussions
+    if (msg.includes('react') || msg.includes('javascript') || msg.includes('typescript') || msg.includes('programming') || msg.includes('coding')) {
+      updateUserContext(message, 'programming');
+      return {
+        text: "💻 Awesome! I love talking about programming! React is fantastic for building modern web apps, and TypeScript adds that extra type safety. JavaScript is the backbone of web development. What specific aspect interests you most?",
+        actions: [
+          { label: "React Tips", action: () => setInput("Tell me about React best practices"), icon: <Code size={16} /> },
+          { label: "TypeScript", action: () => setInput("What are TypeScript benefits?"), icon: <Brain size={16} /> },
+          { label: "Web Dev", action: () => setInput("Modern web development trends"), icon: <ExternalLink size={16} /> }
+        ]
+      };
+    }
+
+    // IoT and hardware discussions
+    if (msg.includes('arduino') || msg.includes('iot') || msg.includes('sensors') || msg.includes('hardware') || msg.includes('embedded')) {
+      updateUserContext(message, 'iot');
+      return {
+        text: "🔧 IoT is fascinating! Arduino and ESP8266 are perfect for smart projects. Sensors, actuators, and connectivity make everything smarter. Are you working on any IoT projects?",
+        actions: [
+          { label: "Arduino Tips", action: () => setInput("Arduino programming tips"), icon: <Cpu size={16} /> },
+          { label: "IoT Projects", action: () => setInput("Show me IoT projects"), icon: <Code size={16} /> },
+          { label: "Sensors", action: () => setInput("What sensors are best for IoT?"), icon: <Brain size={16} /> }
+        ]
+      };
+    }
+
+    // AI and Machine Learning
+    if (msg.includes('ai') || msg.includes('artificial intelligence') || msg.includes('machine learning') || msg.includes('ml') || msg.includes('neural')) {
+      updateUserContext(message, 'ai');
+      return {
+        text: "🤖 AI is revolutionizing everything! From machine learning to neural networks, it's changing how we build applications. Are you interested in AI development or just curious about the technology?",
+        actions: [
+          { label: "AI Development", action: () => setInput("How to start with AI development?"), icon: <Brain size={16} /> },
+          { label: "ML Basics", action: () => setInput("Machine learning fundamentals"), icon: <Code size={16} /> },
+          { label: "AI Tools", action: () => setInput("Best AI tools for developers"), icon: <ExternalLink size={16} /> }
+        ]
+      };
+    }
+
+    // Database and Backend
+    if (msg.includes('database') || msg.includes('sql') || msg.includes('mongodb') || msg.includes('firebase') || msg.includes('backend')) {
+      updateUserContext(message, 'database');
+      return {
+        text: "🗄️ Databases are the backbone of applications! SQL for relational data, NoSQL for flexibility, Firebase for real-time features. What type of data are you working with?",
+        actions: [
+          { label: "SQL Tips", action: () => setInput("SQL best practices"), icon: <Database size={16} /> },
+          { label: "Firebase", action: () => setInput("Firebase features and benefits"), icon: <Code size={16} /> },
+          { label: "NoSQL", action: () => setInput("When to use NoSQL databases"), icon: <Brain size={16} /> }
+        ]
+      };
+    }
+
+    // Cloud and DevOps
+    if (msg.includes('cloud') || msg.includes('aws') || msg.includes('azure') || msg.includes('docker') || msg.includes('kubernetes') || msg.includes('devops')) {
+      updateUserContext(message, 'cloud');
+      return {
+        text: "☁️ Cloud computing is essential for modern applications! AWS, Azure, Docker, Kubernetes - the cloud ecosystem is vast. Are you looking to deploy or optimize existing applications?",
+        actions: [
+          { label: "Cloud Basics", action: () => setInput("Cloud computing fundamentals"), icon: <ExternalLink size={16} /> },
+          { label: "Docker", action: () => setInput("Docker containerization"), icon: <Code size={16} /> },
+          { label: "AWS", action: () => setInput("AWS services overview"), icon: <Brain size={16} /> }
+        ]
+      };
+    }
+
+    // Mobile Development
+    if (msg.includes('mobile') || msg.includes('android') || msg.includes('ios') || msg.includes('flutter') || msg.includes('react native')) {
+      updateUserContext(message, 'mobile');
+      return {
+        text: "📱 Mobile development is exciting! React Native for cross-platform, Flutter for beautiful UIs, native development for performance. What platform are you targeting?",
+        actions: [
+          { label: "React Native", action: () => setInput("React Native development tips"), icon: <Code size={16} /> },
+          { label: "Flutter", action: () => setInput("Flutter vs React Native"), icon: <ExternalLink size={16} /> },
+          { label: "Mobile UI", action: () => setInput("Mobile UI/UX best practices"), icon: <Brain size={16} /> }
+        ]
+      };
+    }
+
     // Advanced help with personalization
     if (msg.includes('help') || msg.includes('what can you do') || msg.includes('capabilities') || msg.includes('services')) {
-      const helpText = `🧠 I can help you explore Michael's services: Web Development, Mobile Apps, API Development, Cloud Services, UI/UX Design, Technical Consulting, and Maintenance Support. ${userContext.conversationHistory.length > 0 ? `So far we've discussed ${userContext.askedAbout.join(', ')}.` : 'What service interests you most?'}`;
+      const helpText = `🧠 I'm your AI assistant and I can help you explore Michael's amazing services: Web Development, Mobile Apps, API Development, Cloud Services, UI/UX Design, Technical Consulting, and Maintenance Support. ${userContext.conversationHistory.length > 0 ? `We've already talked about ${userContext.askedAbout.join(', ')} - what else interests you?` : 'What service catches your eye?'}`;
       
       return {
         text: helpText,
@@ -300,10 +381,49 @@ const Chatbot: React.FC = () => {
       };
     }
     
+    // Tech trends and current topics
+    if (msg.includes('trend') || msg.includes('latest') || msg.includes('new') || msg.includes('future') || msg.includes('2024') || msg.includes('2025')) {
+      updateUserContext(message, 'trends');
+      return {
+        text: "🚀 Tech trends are exciting! AI integration, edge computing, Web3, and sustainable tech are hot topics. What specific trend interests you? I can discuss the latest in web development, IoT, or emerging technologies!",
+        actions: [
+          { label: "AI Trends", action: () => setInput("Latest AI trends in 2024"), icon: <Brain size={16} /> },
+          { label: "Web Dev", action: () => setInput("Modern web development trends"), icon: <Code size={16} /> },
+          { label: "IoT Future", action: () => setInput("Future of IoT technology"), icon: <Cpu size={16} /> }
+        ]
+      };
+    }
+
+    // Programming languages discussion
+    if (msg.includes('python') || msg.includes('java') || msg.includes('c++') || msg.includes('go') || msg.includes('rust') || msg.includes('swift')) {
+      updateUserContext(message, 'languages');
+      return {
+        text: "💻 Programming languages are tools for different jobs! Python for AI/ML, Java for enterprise, C++ for performance, Go for concurrency, Rust for safety. What are you building?",
+        actions: [
+          { label: "Language Comparison", action: () => setInput("Compare programming languages"), icon: <Code size={16} /> },
+          { label: "Best Practices", action: () => setInput("Programming best practices"), icon: <Brain size={16} /> },
+          { label: "Learning Path", action: () => setInput("How to learn programming"), icon: <ExternalLink size={16} /> }
+        ]
+      };
+    }
+
+    // Career and learning
+    if (msg.includes('career') || msg.includes('job') || msg.includes('learn') || msg.includes('study') || msg.includes('course') || msg.includes('tutorial')) {
+      updateUserContext(message, 'career');
+      return {
+        text: "🎓 Tech careers are amazing! Whether you're starting out or leveling up, there's always something new to learn. What area interests you most? I can share insights about different tech paths!",
+        actions: [
+          { label: "Career Paths", action: () => setInput("Tech career paths and options"), icon: <Brain size={16} /> },
+          { label: "Learning Resources", action: () => setInput("Best resources to learn programming"), icon: <Code size={16} /> },
+          { label: "Skills Needed", action: () => setInput("Essential skills for developers"), icon: <ExternalLink size={16} /> }
+        ]
+      };
+    }
+
     // Intelligent fallback with context
     const fallbackText = userContext.conversationHistory.length > 0 
-      ? `${userContext.name ? userContext.name + ', ' : ''}I understand you're looking for more information! ${userContext.interests.length > 0 ? `Based on your interest in ${userContext.interests.slice(0,2).join(' and ')}, ` : ''}try asking about Michael's projects, skills, education, or how to contact him. I'm here to provide personalized help!`
-      : "🤔 I'm here to help you explore Michael's portfolio with intelligent, personalized assistance! Ask me about his projects, skills, education, or how to contact him. I'll learn from our conversation to help you better!";
+      ? `${userContext.name ? userContext.name + ', ' : ''}Hmm, let me think about that! 🤔 ${userContext.interests.length > 0 ? `Since you're into ${userContext.interests.slice(0,2).join(' and ')}, ` : ''}try asking about Michael's projects, skills, education, or how to contact him. I'm here to help with personalized recommendations!`
+      : "🤔 Hey there! I'm here to help you explore Michael's portfolio with some serious AI intelligence! Ask me about his projects, skills, education, or how to contact him. I'll learn from our conversation and give you better recommendations as we chat!";
     
     return { text: fallbackText };
   };
@@ -343,7 +463,7 @@ const Chatbot: React.FC = () => {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-white hover:bg-gray-100 text-black rounded-full shadow-2xl flex items-center justify-center z-50 transition-all duration-300 hover:scale-110 border border-gray-200"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-white hover:bg-gray-100 text-black rounded-full shadow-2xl flex items-center justify-center z-50 transition-all duration-300 hover:scale-110 border border-gray-200 animate-pulse hover:animate-none"
       >
         {isOpen ? <X size={28} /> : <Brain size={28} />}
       </button>
@@ -352,13 +472,13 @@ const Chatbot: React.FC = () => {
         <div className="fixed bottom-24 right-6 w-96 h-[500px] bg-black/95 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 flex flex-col z-40 overflow-hidden">
           <div className="bg-white/10 backdrop-blur-lg p-4 border-b border-white/20">
             <h3 className="font-bold text-lg flex items-center gap-3 text-white">
-              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+              <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center animate-pulse">
                 <Brain size={20} />
               </div>
               AI Assistant
               <div className="ml-auto flex items-center gap-2">
-                <Sparkles size={16} className="text-white" />
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                <Sparkles size={16} className="text-white animate-spin" style={{animationDuration: '3s'}} />
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               </div>
             </h3>
             {userContext.name && (
@@ -401,7 +521,7 @@ const Chatbot: React.FC = () => {
                       <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
                       <div className="w-2 h-2 bg-white rounded-full animate-bounce" style={{animationDelay: '0.4s'}}></div>
                     </div>
-                    <span className="text-xs text-gray-300">AI is thinking...</span>
+                    <span className="text-xs text-gray-300 animate-pulse">AI is thinking...</span>
                   </div>
                 </div>
               </div>
@@ -410,6 +530,57 @@ const Chatbot: React.FC = () => {
           </div>
 
           <div className="p-4 border-t border-white/20">
+            {/* Quick Suggestions */}
+            {messages.length === 1 && (
+              <div className="mb-3">
+                <p className="text-xs text-gray-300 mb-2">Try asking:</p>
+                <div className="flex flex-wrap gap-2">
+                  {["Show me projects", "What skills?", "Contact info", "Tell me about Michael", "React tips", "IoT projects", "AI trends"].map((suggestion, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setInput(suggestion)}
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs text-white transition-all duration-200 hover:scale-105"
+                    >
+                      {suggestion}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {/* Dynamic suggestions based on conversation */}
+            {messages.length > 1 && userContext.askedAbout.length > 0 && (
+              <div className="mb-3">
+                <p className="text-xs text-gray-300 mb-2">You might also ask:</p>
+                <div className="flex flex-wrap gap-2">
+                  {userContext.askedAbout.includes('projects') && !userContext.askedAbout.includes('skills') && (
+                    <button
+                      onClick={() => setInput("What skills does Michael have?")}
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs text-white transition-all duration-200 hover:scale-105"
+                    >
+                      What skills?
+                    </button>
+                  )}
+                  {userContext.askedAbout.includes('skills') && !userContext.askedAbout.includes('contact') && (
+                    <button
+                      onClick={() => setInput("How can I contact Michael?")}
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs text-white transition-all duration-200 hover:scale-105"
+                    >
+                      Contact info
+                    </button>
+                  )}
+                  {!userContext.askedAbout.includes('projects') && (
+                    <button
+                      onClick={() => setInput("Show me Michael's projects")}
+                      className="px-3 py-1.5 bg-white/10 hover:bg-white/20 rounded-lg text-xs text-white transition-all duration-200 hover:scale-105"
+                    >
+                      Show projects
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+            
             <div className="flex gap-3 items-end">
               <input
                 type="text"
