@@ -46,12 +46,6 @@ const ContactForm = () => {
     }, 10000); // 10 second timeout
     
     try {
-      // Check if Firebase is properly configured
-      const apiKey = import.meta.env.VITE_FIREBASE_API_KEY;
-      if (!apiKey || apiKey === 'your_firebase_api_key_here') {
-        throw new Error("Firebase configuration is missing. Please set up your environment variables.");
-      }
-
       const messageData: ContactMessageInsert = {
         name: formData.name.trim(),
         email: formData.email.trim(),
@@ -88,11 +82,21 @@ const ContactForm = () => {
       
     } catch (error: any) {
       console.error("Contact form error:", error);
-      toast({
-        title: "Failed to send message",
-        description: error.message || "An unexpected error occurred. Please try again.",
-        variant: "destructive",
-      });
+      
+      // Check if it's a network error (backend not running)
+      if (error.message.includes('fetch') || error.message.includes('Network')) {
+        toast({
+          title: "Backend not available",
+          description: "Please make sure the backend server is running on port 3001.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Failed to send message",
+          description: error.message || "An unexpected error occurred. Please try again.",
+          variant: "destructive",
+        });
+      }
     } finally {
       clearTimeout(timeoutId);
       setIsSubmitting(false);

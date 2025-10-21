@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, X, Download, ExternalLink, Calendar, Code, Mail, Phone, Brain, Sparkles, Cpu, Database } from 'lucide-react';
+import { chatbotService, ChatbotRequest, ChatbotResponse } from '@/services/chatbotService';
 
 interface Message {
   id: string;
@@ -57,6 +58,55 @@ const Chatbot: React.FC = () => {
       message.toLowerCase().includes(keyword) && !currentInterests.includes(keyword)
     );
     return [...currentInterests, ...found];
+  };
+
+  const extractTopic = (message: string): string => {
+    const msg = message.toLowerCase();
+    if (msg.includes('project') || msg.includes('work') || msg.includes('portfolio')) return 'projects';
+    if (msg.includes('skill') || msg.includes('tech') || msg.includes('technology')) return 'skills';
+    if (msg.includes('contact') || msg.includes('hire') || msg.includes('email')) return 'contact';
+    if (msg.includes('education') || msg.includes('academic') || msg.includes('degree')) return 'education';
+    if (msg.includes('resume') || msg.includes('cv') || msg.includes('experience')) return 'resume';
+    if (msg.includes('hello') || msg.includes('hi') || msg.includes('hey')) return 'greeting';
+    return 'general';
+  };
+
+  const handleAction = (actionType: string, data: string) => {
+    switch (actionType) {
+      case 'navigate':
+        navigateToPage(data.replace('/', ''));
+        break;
+      case 'external':
+        window.open(data, '_blank');
+        break;
+      case 'email':
+        window.open(data, '_blank');
+        break;
+      case 'download':
+        const link = document.createElement('a');
+        link.href = data;
+        link.download = data.split('/').pop() || 'download';
+        link.click();
+        break;
+      default:
+        console.log('Unknown action:', actionType, data);
+    }
+  };
+
+  const getIconComponent = (iconName?: string) => {
+    const iconMap: { [key: string]: React.ReactNode } = {
+      'Code': <Code size={16} />,
+      'Mail': <Mail size={16} />,
+      'Phone': <Phone size={16} />,
+      'Download': <Download size={16} />,
+      'ExternalLink': <ExternalLink size={16} />,
+      'Brain': <Brain size={16} />,
+      'Sparkles': <Sparkles size={16} />,
+      'Calendar': <Calendar size={16} />,
+      'Cpu': <Cpu size={16} />,
+      'Database': <Database size={16} />
+    };
+    return iconMap[iconName || 'Code'] || <Code size={16} />;
   };
 
   const navigateToPage = (page: string) => {
@@ -443,7 +493,38 @@ const Chatbot: React.FC = () => {
     setInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
+    try {
+      // Send to n8n webhook
+      const request: ChatbotRequest = {
+        message: userInput,
+        sessionId: `session_${Date.now()}`,
+        context: userContext
+      };
+
+      const response: ChatbotResponse = await chatbotService.sendMessage(request);
+      
+      const botMessage: Message = {
+        id: (Date.now() + 1).toString(),
+        text: response.text,
+        isBot: true,
+        timestamp: new Date(),
+        hasActions: !!response.actions,
+        actions: response.actions?.map(action => ({
+          label: action.label,
+          action: () => handleAction(action.action, action.data || ''),
+          icon: getIconComponent(action.icon)
+        })),
+        context: `Conversation: ${userContext.conversationHistory.length + 1} messages`
+      };
+      
+      setMessages(prev => [...prev, botMessage]);
+      
+      // Update user context
+      updateUserContext(userInput, extractTopic(userInput));
+      
+    } catch (error) {
+      console.log('Using local chatbot responses (n8n not configured)');
+      // Use local intelligent responses
       const response = getPersonalizedResponse(userInput);
       const botMessage: Message = {
         id: (Date.now() + 1).toString(),
@@ -455,15 +536,19 @@ const Chatbot: React.FC = () => {
         context: `Conversation: ${userContext.conversationHistory.length + 1} messages`
       };
       setMessages(prev => [...prev, botMessage]);
+      
+      // Update user context
+      updateUserContext(userInput, extractTopic(userInput));
+    } finally {
       setIsTyping(false);
-    }, 1200);
+    }
   };
 
   return (
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-16 h-16 bg-white hover:bg-gray-100 text-black rounded-full shadow-2xl flex items-center justify-center z-50 transition-all duration-300 hover:scale-110 border border-gray-200 animate-pulse hover:animate-none"
+        className="fixed bottom-6 right-6 w-16 h-16 bg-white hover:bg-gray-100 text-black rounded-full shadow-2xl flex items-center justify-center z-50 transition-all duration-300 hover:scale-110 border border-gray-200"
       >
         {isOpen ? <X size={28} /> : <Brain size={28} />}
       </button>

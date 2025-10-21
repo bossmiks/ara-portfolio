@@ -1,0 +1,345 @@
+{
+  "name": "Portfolio Chatbot",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "chatbot",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Chatbot Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "chatbot-webhook"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "greeting-condition",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "hello|hi|hey|kamusta|mabuhay",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "greeting-check",
+      "name": "Check Greeting",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "project-condition",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "project|work|portfolio|show me|projects",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "project-check",
+      "name": "Check Projects",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "skill-condition",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "skill|tech|technology|stack|what can|abilities",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "skill-check",
+      "name": "Check Skills",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 500]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "contact-condition",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "contact|hire|email|reach|collaborate|get in touch",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "contact-check",
+      "name": "Check Contact",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [460, 600]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Greeting Response\nconst currentHour = new Date().getHours();\nconst timeGreeting = currentHour < 12 ? 'Good morning' : currentHour < 18 ? 'Good afternoon' : 'Good evening';\nconst isReturningVisitor = $input.first().json.context?.conversationHistory?.length > 3;\nconst userName = $input.first().json.context?.name;\n\nlet greetingText;\nif (isReturningVisitor) {\n  greetingText = `${userName ? `Welcome back, ${userName}!` : 'Welcome back!'} 👋 Ready to dive deeper into Michael's amazing portfolio?`;\n} else {\n  greetingText = `👋 ${timeGreeting}! Welcome to Michael's portfolio! I'm your AI assistant with some serious conversation intelligence.`;\n}\n\nreturn {\n  text: greetingText,\n  actions: [\n    { label: \"Explore Projects\", action: \"navigate\", icon: \"Code\", data: \"/projects\" },\n    { label: \"Contact Michael\", action: \"navigate\", icon: \"Mail\", data: \"/contact\" },\n    { label: \"Download Resume\", action: \"download\", icon: \"Download\", data: \"/resume.pdf\" }\n  ],\n  sessionId: $input.first().json.sessionId\n};"
+      },
+      "id": "greeting-response",
+      "name": "Greeting Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Project Response\nconst userName = $input.first().json.context?.name;\nconst hasAskedBefore = $input.first().json.context?.askedAbout?.includes('projects');\nconst interests = $input.first().json.context?.interests || [];\n\nlet projectText;\nif (hasAskedBefore) {\n  projectText = `${userName ? userName + ', ' : ''}Ah, you're back for more projects! 🎯 Michael's portfolio is full of innovative solutions - from IoT systems to modern web apps.`;\n  if (interests.length > 0) {\n    projectText += ` Since you're into ${interests.join(', ')}, you'll love his tech-focused projects!`;\n  }\n} else {\n  projectText = \"🚀 Wow! Michael's projects are seriously impressive - from smart IoT systems to cutting-edge web applications. His work shows real innovation and technical excellence!\";\n}\n\nreturn {\n  text: projectText,\n  actions: [\n    { label: \"Explore Projects\", action: \"navigate\", icon: \"Code\", data: \"/projects\" },\n    { label: \"GitHub Profile\", action: \"external\", icon: \"ExternalLink\", data: \"https://github.com/bossmiks\" },\n    { label: \"Technical Skills\", action: \"navigate\", icon: \"Brain\", data: \"/about\" }\n  ],\n  sessionId: $input.first().json.sessionId\n};"
+      },
+      "id": "project-response",
+      "name": "Project Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Skills Response\nconst userName = $input.first().json.context?.name;\nconst isReturningVisitor = $input.first().json.context?.conversationHistory?.length > 3;\nconst interests = $input.first().json.context?.interests || [];\n\nlet skillText;\nif (isReturningVisitor) {\n  skillText = `${userName ? userName + ', ' : ''}Michael's skills are legit impressive! 💪 He's got React, TypeScript, IoT development, and modern web tech down pat.`;\n  if (interests.includes('react')) {\n    skillText += ' Perfect match for your React interest!';\n  }\n  skillText += ' Plus Firebase, Node.js, and seamless device integrations - the guy\\'s got range!';\n} else {\n  skillText = \"💻 Michael's skill set is seriously diverse - React, TypeScript, JavaScript, IoT development, and modern web technologies. He creates smart, connected systems that actually work beautifully!\";\n}\n\nreturn {\n  text: skillText,\n  actions: [\n    { label: \"Check Skills\", action: \"navigate\", icon: \"Code\", data: \"/about\" },\n    { label: \"Download Resume\", action: \"download\", icon: \"Download\", data: \"/resume.pdf\" },\n    { label: \"See Projects\", action: \"navigate\", icon: \"Sparkles\", data: \"/projects\" }\n  ],\n  sessionId: $input.first().json.sessionId\n};"
+      },
+      "id": "skill-response",
+      "name": "Skill Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Contact Response\nconst userName = $input.first().json.context?.name;\nconst hasDiscussedWork = $input.first().json.context?.conversationHistory?.some(h => \n  h.includes('project') || h.includes('skill')\n);\n\nlet contactText;\nif (hasDiscussedWork) {\n  contactText = `${userName ? userName + ', ' : ''}Awesome! Since you're interested in Michael's work, he'd be thrilled to chat about potential collaborations or opportunities! 🚀`;\n} else {\n  contactText = \"📧 Ready to connect with Michael? He's super approachable and always excited to discuss new opportunities, collaborations, and innovative projects!\";\n}\n\nreturn {\n  text: contactText,\n  actions: [\n    { label: \"Send Email\", action: \"email\", icon: \"Mail\", data: \"mailto:aramichae19@gmail.com\" },\n    { label: \"LinkedIn\", action: \"external\", icon: \"ExternalLink\", data: \"https://www.linkedin.com/in/michael-ara-jr-317819291/\" },\n    { label: \"Contact Page\", action: \"navigate\", icon: \"Phone\", data: \"/contact\" },\n    { label: \"Download Resume\", action: \"download\", icon: \"Download\", data: \"/resume.pdf\" }\n  ],\n  sessionId: $input.first().json.sessionId\n};"
+      },
+      "id": "contact-response",
+      "name": "Contact Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Fallback Response\nconst userName = $input.first().json.context?.name;\nconst interests = $input.first().json.context?.interests || [];\nconst conversationLength = $input.first().json.context?.conversationHistory?.length || 0;\n\nlet fallbackText;\nif (conversationLength > 0) {\n  fallbackText = `${userName ? userName + ', ' : ''}Hmm, let me think about that! 🤔`;\n  if (interests.length > 0) {\n    fallbackText += ` Since you're into ${interests.slice(0,2).join(' and ')}, `;\n  }\n  fallbackText += \"try asking about Michael's projects, skills, education, or how to contact him. I'm here to help with personalized recommendations!\";\n} else {\n  fallbackText = \"🤔 Hey there! I'm here to help you explore Michael's portfolio with some serious AI intelligence! Ask me about his projects, skills, education, or how to contact him. I'll learn from our conversation and give you better recommendations as we chat!\";\n}\n\nreturn {\n  text: fallbackText,\n  actions: [\n    { label: \"Show Projects\", action: \"navigate\", icon: \"Code\", data: \"/projects\" },\n    { label: \"Contact Info\", action: \"navigate\", icon: \"Mail\", data: \"/contact\" },\n    { label: \"Download Resume\", action: \"download\", icon: \"Download\", data: \"/resume.pdf\" }\n  ],\n  sessionId: $input.first().json.sessionId\n};"
+      },
+      "id": "fallback-response",
+      "name": "Fallback Response",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 600]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ $json }}"
+      },
+      "id": "webhook-response",
+      "name": "Webhook Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 400]
+    }
+  ],
+  "connections": {
+    "Chatbot Webhook": {
+      "main": [
+        [
+          {
+            "node": "Check Greeting",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Greeting": {
+      "main": [
+        [
+          {
+            "node": "Greeting Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Projects",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Projects": {
+      "main": [
+        [
+          {
+            "node": "Project Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Skills",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Skills": {
+      "main": [
+        [
+          {
+            "node": "Skill Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Check Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Contact": {
+      "main": [
+        [
+          {
+            "node": "Contact Response",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Fallback Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Greeting Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Project Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Skill Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fallback Response": {
+      "main": [
+        [
+          {
+            "node": "Webhook Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2024-01-01T00:00:00.000Z",
+  "versionId": "1"
+}
