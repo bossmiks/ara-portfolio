@@ -48,31 +48,31 @@ const Resume = () => {
   ];
 
   const experience = [
-
-     {
-    position: "Software Engineer Full-time",
-    company: "Quanby Solution, Inc.",
-    duration: "Present",
-    description: "Designing, developing, and maintaining scalable web applications by implementing full-stack solutions, optimizing performance, and ensuring high-quality user experiences.",
-responsibilities: [
-  "Built and optimized front-end interfaces with React, JavaScript, HTML, and CSS to deliver responsive and user-friendly designs",
-  "Developed and maintained RESTful APIs and backend services using Node.js and Express",
-  "Integrated and managed relational and cloud databases (MySQL, Supabase) for efficient data handling",
-  "Collaborated with cross-functional teams to deliver new features, resolve issues, and improve system reliability",
-]
-    },
+    // Commented out current full-time position
+    // {
+    //   position: "Software Engineer Full-time",
+    //   company: "Quanby Solution, Inc.",
+    //   duration: "Present",
+    //   description: "Designing, developing, and maintaining scalable web applications by implementing full-stack solutions, optimizing performance, and ensuring high-quality user experiences.",
+    //   responsibilities: [
+    //     "Built and optimized front-end interfaces with React, JavaScript, HTML, and CSS to deliver responsive and user-friendly designs",
+    //     "Developed and maintained RESTful APIs and backend services using Node.js and Express",
+    //     "Integrated and managed relational and cloud databases (MySQL, Supabase) for efficient data handling",
+    //     "Collaborated with cross-functional teams to deliver new features, resolve issues, and improve system reliability",
+    //   ]
+    // },
     
-      {
-     position: "Web Developer Intern",
-    company: "Quanby Solution, Inc.",
-    duration: "June 2023 - 2024",
-    description: "Assisted in developing and maintaining web applications, contributing to front-end and back-end features while gaining hands-on experience in modern web technologies.",
-responsibilities: [
-  "Developed responsive front-end interfaces using HTML, CSS, JavaScript, and React",
-  "Assisted in building RESTful APIs and server-side features with Node.js and Express",
-  "Worked with databases (MySQL, Supabase) for data storage and retrieval",
-  "Collaborated with the development team on debugging, testing, and feature enhancements",
-]
+    {
+      position: "Web Developer Intern",
+      company: "Quanby Solution, Inc.",
+      duration: "June 2023 - 2024",
+      description: "Assisted in developing and maintaining web applications, contributing to front-end and back-end features while gaining hands-on experience in modern web technologies.",
+      responsibilities: [
+        "Developed responsive front-end interfaces using HTML, CSS, JavaScript, and React",
+        "Assisted in building RESTful APIs and server-side features with Node.js and Express",
+        "Worked with databases (MySQL, Supabase) for data storage and retrieval",
+        "Collaborated with the development team on debugging, testing, and feature enhancements",
+      ]
     },
     {
       position: "Freelance Developer",
