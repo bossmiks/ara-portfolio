@@ -79,14 +79,14 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-4 lg:px-8 flex justify-between items-center">
           <NavLink to="/" className="flex items-center">
-            <motion.span
-              className="text-2xl font-bold text-brand-purple"
+            <motion.img
+              src="/uploads/logo.png"
+              alt="Logo"
+              className="h-10 md:h-12 lg:h-14 w-auto"
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              MA.
-            </motion.span>
+            />
           </NavLink>
 
           {/* Desktop Navigation */}

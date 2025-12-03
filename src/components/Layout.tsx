@@ -65,7 +65,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-6 md:mb-0">
-              <div className="text-2xl font-bold text-brand-purple mb-2">MA.</div>
+              <img src="/uploads/logo.png" alt="Logo" className="h-12 md:h-14 lg:h-16 w-auto mb-2" />
               <p className="text-muted-foreground text-sm max-w-md">
                 Developing smart IoT solutions and connected systems with a focus on seamless device integration and intelligent automation.
               </p>
